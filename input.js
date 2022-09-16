@@ -9,23 +9,27 @@ export class InputHandler {
 
         // desktop
         window.addEventListener('keydown', e => {
-            if ((e.key === 'ArrowDown' ||
-                e.key === 'ArrowUp' ||
-                e.key === 'ArrowLeft' ||
-                e.key === 'ArrowRight' ||
-                e.key === 'Enter'
-            ) && this.keys.indexOf(e.key) === -1) {
-                this.keys.push(e.key);
-            } else if (e.key === 'd') this.game.debug = !this.game.debug;
+            if ((e.key === 'ArrowDown' || e.key === 's') && this.keys.indexOf('ArrowDown') === -1) {
+                this.keys.push('ArrowDown');
+            };
+            if ((e.key === 'ArrowUp' || e.key === 'w') && this.keys.indexOf('ArrowUp') === -1) {
+                this.keys.push('ArrowUp');
+            };
+            if ((e.key === 'ArrowRight' || e.key === 'd') && this.keys.indexOf('ArrowRight') === -1) {
+                this.keys.push('ArrowRight');
+            };
+            if ((e.key === 'ArrowLeft' || e.key === 'a') && this.keys.indexOf('ArrowLeft') === -1) {
+                this.keys.push('ArrowLeft');
+            };
+            if (e.key === 'Enter' && this.keys.indexOf('Enter') === -1) this.keys.push('Enter');
+            if (e.key === 'b') this.game.debug = !this.game.debug;
         });
         window.addEventListener('keyup', e => {
-            if ((e.key === 'ArrowDown' ||
-                e.key === 'ArrowUp' ||
-                e.key === 'ArrowLeft' ||
-                e.key === 'ArrowRight' ||
-                e.key === 'Enter')) {
-                this.keys.splice(this.keys.indexOf(e.key), 1);
-            }
+            if (e.key === 'ArrowDown' || e.key === 's') this.keys.splice(this.keys.indexOf('ArrowDown'), 1);
+            if (e.key === 'ArrowUp' || e.key === 'w') this.keys.splice(this.keys.indexOf('ArrowUp'), 1);
+            if (e.key === 'ArrowRight' || e.key === 'd') this.keys.splice(this.keys.indexOf('ArrowRight'), 1);
+            if (e.key === 'ArrowLeft' || e.key === 'a') this.keys.splice(this.keys.indexOf('ArrowLeft'), 1);
+            if (e.key === 'Enter') this.keys.splice(this.keys.indexOf('Enter'), 1);
         });
 
         // mobile
